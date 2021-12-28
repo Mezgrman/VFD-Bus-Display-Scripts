@@ -3,14 +3,16 @@ import time
 from pyfis.ibis import TCPIBISMaster
 from easysnmp import Session
 
-
-IF_HC_IN_OCTETS = "1.3.6.1.2.1.31.1.1.1.6.1"
-IF_HC_OUT_OCTETS = "1.3.6.1.2.1.31.1.1.1.10.1"
+from config_ibis import *
+from config_snmp_stats import *
 
 
 def main():
-    ibis = TCPIBISMaster("192.168.100.45", 5001)
-    snmp = Session(hostname="192.168.100.1", community='public', version=2)
+    if IBIS_MODE == "TCP":
+        ibis = TCPIBISMaster(IBIS_TCP_HOST, IBIS_TCP_PORT)
+    elif IBIS_MODE == "SERIAL":
+        ibis = SerialIBISMaster(IBIS_SERIAL_PORT)
+    snmp = Session(hostname=SNMP_HOST, community='public', version=2)
 
     prev_time = 0
     prev_in_bytes = 0
