@@ -1,6 +1,6 @@
 import time
 
-from pyfis.ibis import TCPIBISMaster
+from pyfis.ibis import SerialIBISMaster, TCPIBISMaster
 from easysnmp import Session
 
 from config_ibis import *
