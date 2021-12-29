@@ -32,7 +32,7 @@ def main():
             prev_in_bytes = in_bytes
             prev_out_bytes = out_bytes
 
-            ibis.DS009("Down: {:.1f} MB\n{:.2f} MB/s\nUp: {:.1f} MB\n{:.2f} MB/s".format(in_bytes/1048576, in_rate/1048576, out_bytes/1048576, out_rate/1048576))
+            ibis.DS009("Down: {:.2f} GB\n{:.2f} MB/s\nUp: {:.2f} GB\n{:.2f} MB/s".format(in_bytes/1073741824, in_rate/1048576, out_bytes/1073741824, out_rate/1048576))
             time.sleep(5)
         except KeyboardInterrupt:
             break
